@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Bubblegum+Sans&family=Indie+Flower&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 340 100% 98%;
+    --foreground: 240 10% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 20%;
+
+    --primary: 340 100% 90%;
+    --primary-foreground: 340 40% 40%;
+
+    --secondary: 260 100% 94%;
+    --secondary-foreground: 260 40% 40%;
+
+    --accent: 210 100% 94%;
+    --accent-foreground: 210 40% 40%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 340 60% 90%;
+    --input: 340 60% 90%;
+    --ring: 340 60% 80%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(255, 222, 226, 0.3) 0%, transparent 40%),
+      radial-gradient(circle at 80% 50%, rgba(211, 228, 253, 0.3) 0%, transparent 30%),
+      radial-gradient(circle at 40% 80%, rgba(229, 222, 255, 0.3) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+  
+  /* Hide default cursor when custom cursor is active */
+  html:not(.touch-device) {
+    cursor: none !important;
+  }
+  
+  /* Ensure buttons and links don't show the default cursor */
+  html:not(.touch-device) a,
+  html:not(.touch-device) button,
+  html:not(.touch-device) [role="button"],
+  html:not(.touch-device) input[type="submit"],
+  html:not(.touch-device) input[type="reset"],
+  html:not(.touch-device) input[type="button"],
+  html:not(.touch-device) .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+}
+
+.polaroid {
+  background: white;
+  padding: 1rem;
+  padding-bottom: 2.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: scale(1.05) rotate(2deg);
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.washi-tape {
+  position: absolute;
+  width: 80px;
+  height: 25px;
+  background-color: rgba(255, 222, 226, 0.7);
+  transform: rotate(-35deg);
+  top: -10px;
+  left: -10px;
+}
+
+.washi-tape:nth-of-type(even) {
+  background-color: rgba(229, 222, 255, 0.7);
+  width: 60px;
+  transform: rotate(40deg);
+  top: -8px;
+  right: -10px;
+  left: auto;
+}
+
+.gift-box {
+  transition: all 0.3s ease;
+}
+
+.gift-box:hover {
+  transform: translateY(-10px);
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.love-note {
+  transform: rotate(-2deg);
+  transition: all 0.3s ease;
+}
+
+.love-note:hover {
+  transform: rotate(0) scale(1.02);
+}
+
+.float-element {
+  animation: float 3s ease-in-out infinite;
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.color-card-canvas {
+  cursor: crosshair;
+  border-radius: 10px;
+}
+
+.balloon {
+  animation: balloon-float 6s ease-in-out infinite;
+  animation-delay: calc(var(--delay) * 1s);
+}
+
+/* Customize scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 222, 226, 0.8);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 222, 226, 1);
+}
+
+/* Custom cursor animation */
+.custom-cursor {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+  animation: cursor-sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes cursor-sparkle {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.custom-cursor-tip {
+  filter: drop-shadow(0 0 6px rgba(219, 39, 119, 0.7));
+  animation: cursor-wave 2s ease-in-out infinite;
+}
+
+.custom-cursor-tail {
+  animation-name: tail-wave;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes cursor-wave {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes tail-wave {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(var(--scale)) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(var(--scale)) rotate(5deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(var(--scale)) rotate(-5deg);
+  }
+}
